@@ -5,6 +5,7 @@ import com.homework.mhafidhaziz.weatherapp.network.WeatherApi
 import dagger.Module
 import dagger.Provides
 import retrofit2.Retrofit
+import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
 import retrofit2.converter.gson.GsonConverterFactory
 import javax.inject.Singleton
 
@@ -25,6 +26,7 @@ class NetworkModule {
         return Retrofit.Builder()
             .baseUrl(BuildConfig.END_POINT)
             .addConverterFactory(GsonConverterFactory.create())
+            .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
             .build()
     }
 

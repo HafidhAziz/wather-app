@@ -9,6 +9,6 @@ package com.homework.mhafidhaziz.weatherapp.network.entity
  */
 
 data class Forecast(
-    var location: String,
+    var day: String,
     var temperature: String
 )

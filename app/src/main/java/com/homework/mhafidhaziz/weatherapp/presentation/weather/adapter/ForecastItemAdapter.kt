@@ -7,7 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import com.homework.mhafidhaziz.weatherapp.R
 import com.homework.mhafidhaziz.weatherapp.databinding.ItemForecastBinding
-import com.homework.mhafidhaziz.weatherapp.network.dto.Forecastday
+import com.homework.mhafidhaziz.weatherapp.network.entity.Forecast
 
 
 /**
@@ -16,7 +16,7 @@ import com.homework.mhafidhaziz.weatherapp.network.dto.Forecastday
  * help.aziz@gmail.com
  * Copyright 2019
  */
-class ForecastItemAdapter(private var forecastList: MutableList<Forecastday>) :
+class ForecastItemAdapter(private var forecastList: MutableList<Forecast>) :
     RecyclerView.Adapter<ForecastItemAdapter.ForecastHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ForecastHolder {
@@ -35,9 +35,9 @@ class ForecastItemAdapter(private var forecastList: MutableList<Forecastday>) :
 
         private var binding: ItemForecastBinding = DataBindingUtil.bind(itemView)
 
-        fun bindItem(items: Forecastday) {
-            binding.textDay.text = items.date_epoch.toString()
-            binding.textTemperature.text = items.day.avgtemp_c.toString()
+        fun bindItem(items: Forecast) {
+            binding.textDay.text = items.day
+            binding.textTemperature.text = items.temperature
         }
     }
 }

@@ -5,6 +5,7 @@ import com.homework.mhafidhaziz.weatherapp.network.entity.Forecast
 import com.homework.mhafidhaziz.weatherapp.network.entity.Weather
 import com.homework.mhafidhaziz.weatherapp.presentation.WeatherApplication
 import io.reactivex.Observer
+import io.reactivex.disposables.Disposable
 import java.text.ParseException
 import java.text.SimpleDateFormat
 import java.util.*
@@ -19,39 +20,39 @@ import javax.inject.Inject
  */
 class WeatherFactory {
     @Inject
-    internal var weatherData: WeatherData? = null
+    lateinit var weatherData: WeatherData
     private var observer: Observer<Weather>? = null
 
     init {
         WeatherApplication.getComponent()?.inject(this)
 
-//        weatherData!!.registerObserver(object : Observer<WeatherDataModel>() {
-//            fun onSubscribe(d: Disposable) {
-//
-//            }
-//
-//            fun onNext(weatherDataModel: WeatherDataModel) {
-//                observer!!.onNext(convertData(weatherDataModel))
-//            }
-//
-//            fun onError(e: Throwable) {
-//
-//            }
-//
-//            fun onComplete() {
-//
-//            }
-//        })
+        weatherData.registerObserver(object : Observer<WeatherDto> {
+
+            override fun onNext(weatherDto: WeatherDto) {
+                observer!!.onNext(convertData(weatherDto))
+            }
+
+            override fun onSubscribe(d: Disposable) {
+
+            }
+            override fun onError(e: Throwable) {
+
+            }
+
+            override fun onComplete() {
+
+            }
+        })
     }
 
     fun getData(location: String) {
-        weatherData!!.callApi(location)
+        weatherData.callApi(location)
     }
 
     private fun convertData(weatherDto: WeatherDto): Weather {
         val forecasts = ArrayList<Forecast>()
         for (forecastDay in weatherDto.forecast.forecastday) {
-            var forecast = Forecast(formatDate(forecastDay.date), forecastDay.day.avgtemp_c.toString())
+            val forecast = Forecast(formatDate(forecastDay.date), forecastDay.day.avgtemp_c.toString())
             forecasts.add(forecast)
         }
 
