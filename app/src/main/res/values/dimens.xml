@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:tools="http://schemas.android.com/tools">
+
+    <dimen name="dp16">16dp</dimen>
+    <dimen name="dp44">44dp</dimen>
+    <dimen name="dp56">56dp</dimen>
+    <dimen name="dp62">62dp</dimen>
+    <dimen name="dp80">80dp</dimen>
+
+    <dimen name="sp54">54sp</dimen>
+    <dimen name="sp16">16sp</dimen>
+    <dimen name="sp36">36sp</dimen>
+    <dimen name="sp96">96sp</dimen>
+
+    <dimen name="line_height_elevation" tools:ignore="MissingDefaultResource">4dp</dimen>
+
+</resources>

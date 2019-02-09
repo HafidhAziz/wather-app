@@ -8,4 +8,29 @@
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
+    <style name="LineWithElevationReverse">
+        <item name="android:background">@drawable/drawable_shadow_elevation_reverse</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">2dp</item>
+        <item name="android:dither">true</item>
+    </style>
+
+    <style name="RegularFont">
+        <item name="android:fontFamily">@font/roboto_regular</item>
+        <item name="android:textColor">@color/colorPrimary</item>
+        <item name="android:lineSpacingMultiplier">1.2</item>
+    </style>
+
+    <style name="BlackFont">
+        <item name="android:fontFamily">@font/roboto_black</item>
+        <item name="android:textColor">@color/colorPrimary</item>
+        <item name="android:lineSpacingMultiplier">1.2</item>
+    </style>
+
+    <style name="ThinFont">
+        <item name="android:fontFamily">@font/roboto_thin</item>
+        <item name="android:textColor">@color/colorSecondary</item>
+        <item name="android:lineSpacingMultiplier">1.4</item>
+    </style>
+
 </resources>

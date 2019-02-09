@@ -9,12 +9,13 @@ android {
     compileSdkVersion 28
     defaultConfig {
         applicationId "com.homework.mhafidhaziz.weatherapp"
-        minSdkVersion 21
+        minSdkVersion 16
         targetSdkVersion 28
         versionCode 1
         versionName "1.0"
         multiDexEnabled true
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+        buildConfigField 'String', 'END_POINT', '"http://api.apixu.com/v1/"'
     }
     buildTypes {
         release {
@@ -70,4 +71,11 @@ dependencies {
 
     //retrofit
     implementation 'com.squareup.retrofit2:retrofit:2.5.0'
+    implementation 'com.squareup.retrofit2:converter-gson:2.4.0'
+
+    implementation "com.google.android.gms:play-services-location:16.0.0"
+
+    implementation 'com.google.dagger:dagger:2.16'
+    kapt 'com.google.dagger:dagger-android-processor:2.15'
+    kapt 'com.google.dagger:dagger-compiler:2.15'
 }
