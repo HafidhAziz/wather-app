@@ -1,7 +1,9 @@
 package com.homework.mhafidhaziz.weatherapp.network.entity
 
 import android.os.Parcelable
+import com.homework.mhafidhaziz.weatherapp.network.dto.Forecastday
 import kotlinx.android.parcel.Parcelize
+
 
 /**
  * Created by mhafidhabdulaziz on 10/02/19.
@@ -10,9 +12,8 @@ import kotlinx.android.parcel.Parcelize
  * Copyright 2019
  */
 
-@Parcelize
 data class Weather(
-    var current: Current,
-    var forecast: Forecast,
-    var location: Location
-) : Parcelable
+    var location: String,
+    var temperature: String,
+    var forecast: List<Forecast>
+)

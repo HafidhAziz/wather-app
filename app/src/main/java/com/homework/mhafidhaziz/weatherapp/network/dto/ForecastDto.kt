@@ -1,4 +1,4 @@
-package com.homework.mhafidhaziz.weatherapp.network.entity
+package com.homework.mhafidhaziz.weatherapp.network.dto
 
 import android.os.Parcelable
 import kotlinx.android.parcel.Parcelize
@@ -11,9 +11,6 @@ import kotlinx.android.parcel.Parcelize
  */
 
 @Parcelize
-data class Forecastday(
-    var astro: Astro,
-    var date: String,
-    var date_epoch: Int,
-    var day: Day
+data class ForecastDto(
+    var forecastday: List<Forecastday>
 ) : Parcelable

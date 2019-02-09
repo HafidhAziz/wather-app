@@ -1,5 +1,11 @@
 package com.homework.mhafidhaziz.weatherapp.di.module
 
+import com.homework.mhafidhaziz.weatherapp.network.WeatherApi
+import com.homework.mhafidhaziz.weatherapp.network.WeatherData
+import com.homework.mhafidhaziz.weatherapp.network.WeatherFactory
+import dagger.Provides
+import javax.inject.Singleton
+
 
 /**
  * Created by mhafidhabdulaziz on 10/02/19.
@@ -10,15 +16,15 @@ package com.homework.mhafidhaziz.weatherapp.di.module
 
 class DataModule {
 
-//    @Provides
-//    @Singleton
-//    internal fun provideWeatherData(weatherApi: WeatherApi): WeatherData {
-//        return WeatherData(weatherApi)
-//    }
+    @Provides
+    @Singleton
+    internal fun provideWeatherData(weatherApi: WeatherApi): WeatherData {
+        return WeatherData(weatherApi)
+    }
 
-//    @Provides
-//    @Singleton
-//    internal fun provideWeatherFactory(): WeatherFactory {
-//        return WeatherFactory()
-//    }
+    @Provides
+    @Singleton
+    internal fun provideWeatherFactory(): WeatherFactory {
+        return WeatherFactory()
+    }
 }

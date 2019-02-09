@@ -13,7 +13,7 @@ import com.homework.mhafidhaziz.weatherapp.di.module.NetworkModule
  * help.aziz@gmail.com
  * Copyright 2019
  */
-class WeatherApplication : Application() {
+object WeatherApplication : Application() {
     private var component: AppComponent? = null
 
     override fun onCreate() {

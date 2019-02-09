@@ -1,4 +1,4 @@
-package com.homework.mhafidhaziz.weatherapp.network.entity
+package com.homework.mhafidhaziz.weatherapp.network.dto
 
 import android.os.Parcelable
 import kotlinx.android.parcel.Parcelize

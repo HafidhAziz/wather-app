@@ -1,7 +1,7 @@
 package com.homework.mhafidhaziz.weatherapp.network;
 
 import android.database.Observable;
-import com.homework.mhafidhaziz.weatherapp.network.entity.Weather;
+import com.homework.mhafidhaziz.weatherapp.network.dto.WeatherDto;
 import retrofit2.http.GET;
 import retrofit2.http.Query;
 
@@ -13,5 +13,7 @@ import retrofit2.http.Query;
  */
 public interface WeatherApi {
     @GET("forecast.json")
-    Observable<Weather> getWeather(@Query("key") String key, @Query("q") String location);
+    Observable<WeatherDto> getWeather(@Query("key") String key,
+                                      @Query("q") String location,
+                                      @Query("days") String days);
 }
