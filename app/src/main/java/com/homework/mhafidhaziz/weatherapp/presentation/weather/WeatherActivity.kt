@@ -12,7 +12,9 @@ import android.os.Bundle
 import android.support.v4.app.ActivityCompat
 import android.support.v4.content.ContextCompat
 import android.support.v7.app.AppCompatActivity
+import android.support.v7.widget.DividerItemDecoration
 import android.support.v7.widget.LinearLayoutManager
+import android.view.animation.AnimationUtils
 import android.widget.Toast
 import com.homework.mhafidhaziz.weatherapp.R
 import com.homework.mhafidhaziz.weatherapp.common.Constants
@@ -35,9 +37,9 @@ class WeatherActivity : AppCompatActivity(),
 
     @Inject
     lateinit var weatherFactory: WeatherFactory
-    lateinit var binding: ActivityWeatherBinding
+    private lateinit var binding: ActivityWeatherBinding
     private lateinit var viewModel: WeatherViewModel
-    lateinit var forecastAdapter: ForecastItemAdapter
+    private lateinit var forecastAdapter: ForecastItemAdapter
 
     companion object {
         private const val PERMISSION_REQUEST_LOCATION_CODE = 8
@@ -53,6 +55,8 @@ class WeatherActivity : AppCompatActivity(),
 
         val mVerticalLayoutManager = LinearLayoutManager(this)
         mVerticalLayoutManager.orientation = LinearLayoutManager.VERTICAL
+        val dividerItemDecoration = DividerItemDecoration(this, mVerticalLayoutManager.orientation)
+        binding.forecastRecycler.addItemDecoration(dividerItemDecoration)
         binding.forecastRecycler.layoutManager = mVerticalLayoutManager
 
         observeWeatherData()
@@ -65,6 +69,7 @@ class WeatherActivity : AppCompatActivity(),
                 viewModel.updateData(it)
                 forecastAdapter = ForecastItemAdapter(it.forecast.toMutableList(), this)
                 binding.forecastRecycler.adapter = forecastAdapter
+                runLayoutAnimation()
             }
             if(weather == null){
                 showErrorScreen()
@@ -143,6 +148,14 @@ class WeatherActivity : AppCompatActivity(),
         if (checkLocationPermission()) {
             checkAndGetCurrentLocation()
         }
+    }
+
+    private fun runLayoutAnimation() {
+        val controller = AnimationUtils.loadLayoutAnimation(binding.bottomSheet.context, R.anim.layout_slide_from_bottom)
+
+        binding.bottomSheet.layoutAnimation = controller
+        binding.forecastRecycler.adapter?.notifyDataSetChanged()
+        binding.bottomSheet.scheduleLayoutAnimation()
     }
 
 }
