@@ -209,14 +209,13 @@ class WeatherActivity : AppCompatActivity(),
     }
 
     private fun setLoadingAnimation() {
-        viewModel.showLoading()
         binding.loadingImage.startAnimation(rotate)
     }
 
     private fun stopLoadingAnimation() {
+        binding.loadingImage.clearAnimation()
         rotate.cancel()
         rotate.reset()
-        viewModel.hideLoading()
     }
 
 }
