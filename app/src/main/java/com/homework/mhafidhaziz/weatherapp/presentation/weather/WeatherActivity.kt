@@ -132,10 +132,10 @@ class WeatherActivity : AppCompatActivity(),
 
     private val locationListener: LocationListener = object : LocationListener {
         override fun onLocationChanged(location: Location) {
-            val gcd = Geocoder(this@WeatherActivity, Locale(Constants.LANGUAGE, Constants.COUNTRY))
+            val gcd = Geocoder(this@WeatherActivity, Locale("en", "EN"))
             val addresses = gcd.getFromLocation(location.latitude, location.longitude, 1)
             if (addresses.size > 0) {
-                viewModel.getWeatherDataFromApi("Bekasi", weatherFactory)
+                viewModel.getWeatherDataFromApi(addresses[0].adminArea, weatherFactory)
             }
         }
 
@@ -197,7 +197,6 @@ class WeatherActivity : AppCompatActivity(),
             AnimationUtils.loadLayoutAnimation(binding.bottomSheet.context, R.anim.layout_slide_from_bottom)
 
         binding.bottomSheet.layoutAnimation = controller
-        binding.forecastRecycler.adapter?.notifyDataSetChanged()
         binding.bottomSheet.scheduleLayoutAnimation()
     }
 
