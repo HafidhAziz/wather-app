@@ -56,8 +56,9 @@
               android:layout_height="wrap_content"
               android:background="@color/colorWhiteApp"
               android:orientation="vertical"
-              android:padding="@dimen/dp16"
-              app:behavior_hideable="true"
+              android:paddingTop="@dimen/dp16"
+              android:paddingLeft="@dimen/dp16"
+              android:paddingRight="@dimen/dp16"
               app:layout_behavior="android.support.design.widget.BottomSheetBehavior">
 
             <android.support.v7.widget.RecyclerView

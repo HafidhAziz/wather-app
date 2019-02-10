@@ -62,9 +62,9 @@ class WeatherFactory {
     private fun formatDate(dateString: String): String {
         var day = ""
         try {
-            val simpleDateFormat = SimpleDateFormat("yyyy-MM-dd", Locale("ID"))
+            val simpleDateFormat = SimpleDateFormat("yyyy-MM-dd", Locale("en", "EN"))
             val date = simpleDateFormat.parse(dateString)
-            val simpleDateFormatDay = SimpleDateFormat("EEEE", Locale("ID"))
+            val simpleDateFormatDay = SimpleDateFormat("EEEE", Locale("en", "EN"))
             day = simpleDateFormatDay.format(date)
         } catch (e: ParseException) {
             e.printStackTrace()

@@ -63,7 +63,7 @@ class WeatherActivity : AppCompatActivity(),
         viewModel.getWeatherData().observe(this, Observer { weather ->
             weather?.let {
                 viewModel.updateData(it)
-                forecastAdapter = ForecastItemAdapter(it.forecast.toMutableList())
+                forecastAdapter = ForecastItemAdapter(it.forecast.toMutableList(), this)
                 binding.forecastRecycler.adapter = forecastAdapter
             }
             if(weather == null){
