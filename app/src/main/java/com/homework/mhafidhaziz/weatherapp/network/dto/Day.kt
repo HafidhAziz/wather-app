@@ -12,11 +12,11 @@ import kotlinx.android.parcel.Parcelize
 
 @Parcelize
 data class Day(
-    var avghumidity: Int,
+    var avghumidity: Double,
     var avgtemp_c: Double,
     var avgtemp_f: Double,
     var avgvis_km: Double,
-    var avgvis_miles: Int,
+    var avgvis_miles: Double,
     var condition: Condition,
     var maxtemp_c: Double,
     var maxtemp_f: Double,

@@ -56,7 +56,7 @@ class WeatherFactory {
             forecasts.add(forecast)
         }
 
-        return Weather(weatherDto.current.feelslike_c.toString(), weatherDto.location.name, forecasts)
+        return Weather(weatherDto.location.name, weatherDto.current.feelslike_c.toString(), forecasts)
     }
 
     private fun formatDate(dateString: String): String {

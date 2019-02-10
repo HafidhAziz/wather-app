@@ -14,6 +14,6 @@ import kotlinx.android.parcel.Parcelize
 data class Forecastday(
     var astro: Astro,
     var date: String,
-    var date_epoch: Int,
+    var date_epoch: Double,
     var day: Day
 ) : Parcelable

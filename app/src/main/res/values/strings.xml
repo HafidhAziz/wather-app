@@ -1,4 +1,5 @@
 <resources>
     <string name="app_name">WeatherApp</string>
 
+    <string name="message_denied_permission">Location Denied. Can not retrieve weather forecast.</string>
 </resources>

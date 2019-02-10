@@ -30,7 +30,7 @@ class WeatherData(api: WeatherApi) {
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe(object : Observer<WeatherDto> {
                 override fun onSubscribe(d: Disposable) {
-
+                    Log.i(">>>forecast", "SUBSCRIBE")
                 }
 
                 override fun onNext(weather: WeatherDto) {

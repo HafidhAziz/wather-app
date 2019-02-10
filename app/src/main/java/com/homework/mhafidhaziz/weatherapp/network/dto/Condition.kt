@@ -12,7 +12,7 @@ import kotlinx.android.parcel.Parcelize
 
 @Parcelize
 data class Condition(
-    var code: Int,
+    var code: Double,
     var icon: String,
     var text: String
 ) : Parcelable
