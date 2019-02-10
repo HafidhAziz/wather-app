@@ -11,7 +11,5 @@ class Constants {
     companion object {
         const val API_KEY = "588e9a32bd2948998fb175106190902"
         const val DAY_COUNT = "4"
-        const val LANGUAGE = "id"
-        const val COUNTRY = "ID"
     }
 }

@@ -12,6 +12,4 @@
     <dimen name="sp36">36sp</dimen>
     <dimen name="sp96">96sp</dimen>
 
-    <dimen name="line_height_elevation" tools:ignore="MissingDefaultResource">4dp</dimen>
-
 </resources>
