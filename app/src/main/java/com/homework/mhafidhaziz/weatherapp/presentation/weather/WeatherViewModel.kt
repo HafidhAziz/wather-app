@@ -20,11 +20,38 @@ class WeatherViewModel : ViewModel() {
 
     private lateinit var weatherFactory: WeatherFactory
     private var weatherData: MutableLiveData<Weather>? = null
+    private var error: MutableLiveData<Throwable>? = null
+    private var loading: MutableLiveData<Boolean>? = null
 
     var bTemperature = ObservableField<String>()
     var bLocation = ObservableField<String>()
-    var bIsLoading = ObservableField<Boolean>(true)
-    var bIsError = ObservableField<Boolean>(false)
+    var bShowError = ObservableField<Boolean>(false)
+    var bShowLoadingView = ObservableField<Boolean>(true)
+
+    fun getError(): LiveData<Throwable> {
+        if (error == null) {
+            error = MutableLiveData()
+        }
+        return error as LiveData<Throwable>
+    }
+
+    fun isLoading(): LiveData<Boolean> {
+        if (loading == null)
+            loading = MutableLiveData()
+        return loading as LiveData<Boolean>
+    }
+
+    fun setLoading(boolean: Boolean) {
+        loading?.value = boolean
+    }
+
+    fun showLoading() {
+        bShowLoadingView.set(true)
+    }
+
+    fun hideLoading() {
+        bShowLoadingView.set(false)
+    }
 
     fun getWeatherData(): LiveData<Weather> {
         if (weatherData == null)
@@ -36,22 +63,22 @@ class WeatherViewModel : ViewModel() {
         weatherFactory = weatherFact
         weatherFactory.registerObserver(object : Observer<Weather> {
             override fun onSubscribe(d: Disposable) {
-
+                setLoading(false)
             }
 
             override fun onNext(weather: Weather) {
-                bIsLoading.set(false)
+                setLoading(false)
                 weatherData?.value = weather
             }
 
             override fun onError(e: Throwable) {
-                bIsLoading.set(false)
-                bIsError.set(true)
+                setLoading(false)
+                error?.value = e
                 weatherData?.value = null
             }
 
             override fun onComplete() {
-                bIsLoading.set(false)
+                setLoading(false)
             }
         })
         weatherFactory.getData(location)

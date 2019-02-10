@@ -67,7 +67,35 @@ class WeatherActivity : AppCompatActivity(),
         setLoadingAnimation()
 
         observeWeatherData()
+        observeLoading()
+        observeError()
 
+    }
+
+    private fun observeError() {
+        viewModel.getError().observe(this, Observer { error ->
+            if(error != null){
+                viewModel.bShowError.set(true)
+                viewModel.hideLoading()
+                stopLoadingAnimation()
+            }
+        })
+    }
+
+    private fun observeLoading() {
+        viewModel.isLoading().observe(this, Observer { loading ->
+            loading?.let {
+                when (it) {
+                    true -> {
+                        viewModel.showLoading()
+                    }
+                    else -> {
+                        viewModel.hideLoading()
+                        stopLoadingAnimation()
+                    }
+                }
+            }
+        })
     }
 
     private fun observeWeatherData() {
@@ -175,18 +203,20 @@ class WeatherActivity : AppCompatActivity(),
 
 
     override fun onClickRetry(view: View) {
-        viewModel.bIsLoading.set(true)
-        viewModel.bIsError.set(false)
+        viewModel.showLoading()
+        viewModel.bShowError.set(false)
         checkAndGetCurrentLocation()
     }
 
     private fun setLoadingAnimation() {
+        viewModel.showLoading()
         binding.loadingImage.startAnimation(rotate)
     }
 
     private fun stopLoadingAnimation() {
         rotate.cancel()
         rotate.reset()
+        viewModel.hideLoading()
     }
 
 }
