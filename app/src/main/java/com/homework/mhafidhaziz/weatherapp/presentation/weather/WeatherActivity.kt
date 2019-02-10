@@ -14,6 +14,8 @@ import android.support.v4.content.ContextCompat
 import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.DividerItemDecoration
 import android.support.v7.widget.LinearLayoutManager
+import android.view.View
+import android.view.animation.Animation
 import android.view.animation.AnimationUtils
 import android.widget.Toast
 import com.homework.mhafidhaziz.weatherapp.R
@@ -40,6 +42,7 @@ class WeatherActivity : AppCompatActivity(),
     private lateinit var binding: ActivityWeatherBinding
     private lateinit var viewModel: WeatherViewModel
     private lateinit var forecastAdapter: ForecastItemAdapter
+    private lateinit var rotate: Animation
 
     companion object {
         private const val PERMISSION_REQUEST_LOCATION_CODE = 8
@@ -59,6 +62,10 @@ class WeatherActivity : AppCompatActivity(),
         binding.forecastRecycler.addItemDecoration(dividerItemDecoration)
         binding.forecastRecycler.layoutManager = mVerticalLayoutManager
 
+        rotate = AnimationUtils.loadAnimation(this, R.anim.rotate_infinite)
+
+        setLoadingAnimation()
+
         observeWeatherData()
 
     }
@@ -71,7 +78,7 @@ class WeatherActivity : AppCompatActivity(),
                 binding.forecastRecycler.adapter = forecastAdapter
                 runLayoutAnimation()
             }
-            if(weather == null){
+            if (weather == null) {
                 showErrorScreen()
             }
         })
@@ -80,8 +87,15 @@ class WeatherActivity : AppCompatActivity(),
     private fun checkAndGetCurrentLocation() {
         val locationManager = getSystemService(LOCATION_SERVICE) as LocationManager?
 
-        if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED &&
-            ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) == PackageManager.PERMISSION_GRANTED) {
+        if (ActivityCompat.checkSelfPermission(
+                this,
+                Manifest.permission.ACCESS_FINE_LOCATION
+            ) == PackageManager.PERMISSION_GRANTED &&
+            ActivityCompat.checkSelfPermission(
+                this,
+                Manifest.permission.ACCESS_COARSE_LOCATION
+            ) == PackageManager.PERMISSION_GRANTED
+        ) {
             locationManager!!.requestLocationUpdates(LocationManager.NETWORK_PROVIDER, 0L, 10f, locationListener)
         } else {
             checkLocationPermission()
@@ -151,11 +165,28 @@ class WeatherActivity : AppCompatActivity(),
     }
 
     private fun runLayoutAnimation() {
-        val controller = AnimationUtils.loadLayoutAnimation(binding.bottomSheet.context, R.anim.layout_slide_from_bottom)
+        val controller =
+            AnimationUtils.loadLayoutAnimation(binding.bottomSheet.context, R.anim.layout_slide_from_bottom)
 
         binding.bottomSheet.layoutAnimation = controller
         binding.forecastRecycler.adapter?.notifyDataSetChanged()
         binding.bottomSheet.scheduleLayoutAnimation()
+    }
+
+
+    override fun onClickRetry(view: View) {
+        viewModel.bIsLoading.set(true)
+        viewModel.bIsError.set(false)
+        checkAndGetCurrentLocation()
+    }
+
+    private fun setLoadingAnimation() {
+        binding.loadingImage.startAnimation(rotate)
+    }
+
+    private fun stopLoadingAnimation() {
+        rotate.cancel()
+        rotate.reset()
     }
 
 }

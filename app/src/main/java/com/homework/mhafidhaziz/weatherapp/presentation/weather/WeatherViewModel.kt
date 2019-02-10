@@ -23,6 +23,8 @@ class WeatherViewModel : ViewModel() {
 
     var bTemperature = ObservableField<String>()
     var bLocation = ObservableField<String>()
+    var bIsLoading = ObservableField<Boolean>(true)
+    var bIsError = ObservableField<Boolean>(false)
 
     fun getWeatherData(): LiveData<Weather> {
         if (weatherData == null)
@@ -38,15 +40,18 @@ class WeatherViewModel : ViewModel() {
             }
 
             override fun onNext(weather: Weather) {
+                bIsLoading.set(false)
                 weatherData?.value = weather
             }
 
             override fun onError(e: Throwable) {
+                bIsLoading.set(false)
+                bIsError.set(true)
                 weatherData?.value = null
             }
 
             override fun onComplete() {
-
+                bIsLoading.set(false)
             }
         })
         weatherFactory.getData(location)

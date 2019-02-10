@@ -2,5 +2,7 @@
     <string name="app_name">WeatherApp</string>
 
     <string name="message_denied_permission">Location Denied. Can not retrieve weather forecast.</string>
-    <string name="info_celcius">"%1$s C"</string>
+    <string name="info_celcius">%1$s C</string>
+    <string name="info_error">Something went wrong at our end!</string>
+    <string name="text_retry">RETRY</string>
 </resources>

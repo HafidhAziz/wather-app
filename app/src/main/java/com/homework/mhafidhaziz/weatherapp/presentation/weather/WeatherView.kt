@@ -1,5 +1,7 @@
 package com.homework.mhafidhaziz.weatherapp.presentation.weather
 
+import android.view.View
+
 
 /**
  * Created by mhafidhabdulaziz on 10/02/19.
@@ -8,4 +10,5 @@ package com.homework.mhafidhaziz.weatherapp.presentation.weather
  * Copyright 2019
  */
 interface WeatherView {
+    fun onClickRetry(view: View)
 }
