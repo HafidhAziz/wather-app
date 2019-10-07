@@ -9,7 +9,6 @@ import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
 import retrofit2.converter.gson.GsonConverterFactory
 import javax.inject.Singleton
 
-
 /**
  * Created by mhafidhabdulaziz on 10/02/19.
  * weather-app

@@ -5,7 +5,6 @@ import io.reactivex.Observable
 import retrofit2.http.GET
 import retrofit2.http.Query
 
-
 /**
  * Created by mhafidhabdulaziz on 10/02/19.
  * weather-app
@@ -14,7 +13,9 @@ import retrofit2.http.Query
  */
 interface WeatherApi {
     @GET("forecast.json")
-    fun getWeather(@Query("key") key : String,
-                   @Query("q") location : String,
-                   @Query("days") days : String) : Observable<WeatherDto>
+    fun getWeather(
+        @Query("key") key: String,
+        @Query("q") location: String,
+        @Query("days") days: String
+    ): Observable<WeatherDto>
 }

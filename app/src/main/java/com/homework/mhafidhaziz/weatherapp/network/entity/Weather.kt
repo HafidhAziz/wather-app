@@ -4,7 +4,6 @@ import android.os.Parcelable
 import com.homework.mhafidhaziz.weatherapp.network.dto.Forecastday
 import kotlinx.android.parcel.Parcelize
 
-
 /**
  * Created by mhafidhabdulaziz on 10/02/19.
  * weather-app
