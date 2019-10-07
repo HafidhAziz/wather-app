@@ -8,7 +8,6 @@ import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.Disposable
 import io.reactivex.schedulers.Schedulers
 
-
 /**
  * Created by mhafidhabdulaziz on 10/02/19.
  * weather-app
@@ -43,7 +42,6 @@ class WeatherData(api: WeatherApi) {
                 }
 
                 override fun onComplete() {
-
                 }
             })
     }

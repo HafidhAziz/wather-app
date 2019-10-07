@@ -5,7 +5,6 @@ import dagger.Module
 import dagger.Provides
 import javax.inject.Singleton
 
-
 /**
  * Created by mhafidhabdulaziz on 10/02/19.
  * weather-app

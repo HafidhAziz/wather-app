@@ -1,6 +1,7 @@
 package com.homework.mhafidhaziz.weatherapp.presentation;
 
 import android.app.Application;
+
 import com.homework.mhafidhaziz.weatherapp.di.component.AppComponent;
 import com.homework.mhafidhaziz.weatherapp.di.component.DaggerAppComponent;
 import com.homework.mhafidhaziz.weatherapp.di.module.AppModule;

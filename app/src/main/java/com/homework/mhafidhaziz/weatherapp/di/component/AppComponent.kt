@@ -8,7 +8,6 @@ import com.homework.mhafidhaziz.weatherapp.presentation.weather.WeatherActivity
 import dagger.Component
 import javax.inject.Singleton
 
-
 /**
  * Created by mhafidhabdulaziz on 10/02/19.
  * weather-app

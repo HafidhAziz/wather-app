@@ -11,7 +11,6 @@ import java.text.SimpleDateFormat
 import java.util.*
 import javax.inject.Inject
 
-
 /**
  * Created by mhafidhabdulaziz on 10/02/19.
  * weather-app
@@ -33,14 +32,12 @@ class WeatherFactory {
             }
 
             override fun onSubscribe(d: Disposable) {
-
             }
-            override fun onError(e: Throwable) {
 
+            override fun onError(e: Throwable) {
             }
 
             override fun onComplete() {
-
             }
         })
     }
@@ -52,11 +49,16 @@ class WeatherFactory {
     private fun convertData(weatherDto: WeatherDto): Weather {
         val forecasts = ArrayList<Forecast>()
         for (forecastDay in weatherDto.forecast.forecastday) {
-            val forecast = Forecast(formatDate(forecastDay.date), forecastDay.day.avgtemp_c.toString())
+            val forecast =
+                Forecast(formatDate(forecastDay.date), forecastDay.day.avgtemp_c.toString())
             forecasts.add(forecast)
         }
 
-        return Weather(weatherDto.location.name, weatherDto.current.feelslike_c.toString(), forecasts)
+        return Weather(
+            weatherDto.location.name,
+            weatherDto.current.feelslike_c.toString(),
+            forecasts
+        )
     }
 
     private fun formatDate(dateString: String): String {
