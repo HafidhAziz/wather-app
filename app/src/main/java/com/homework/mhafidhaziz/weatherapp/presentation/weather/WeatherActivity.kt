@@ -19,7 +19,6 @@ import android.view.animation.Animation
 import android.view.animation.AnimationUtils
 import android.widget.Toast
 import com.homework.mhafidhaziz.weatherapp.R
-import com.homework.mhafidhaziz.weatherapp.common.Constants
 import com.homework.mhafidhaziz.weatherapp.databinding.ActivityWeatherBinding
 import com.homework.mhafidhaziz.weatherapp.network.WeatherFactory
 import com.homework.mhafidhaziz.weatherapp.presentation.WeatherApplication
