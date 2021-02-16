@@ -1,4 +1,4 @@
-# wather-app
+# weather-app
 Android Application that help user to find out the current weather and forecasts from their location.
 
 # API reference
